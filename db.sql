@@ -37,7 +37,7 @@ CREATE TABLE `hierarchy` (
 `hierachyId` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
   `Parent_hierachyId` int(11) NOT NULL,
-  `location` varchar(100) NOT NULL,
+  `location` varchar(100) DEFAULT NULL,
   `geoCode` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
