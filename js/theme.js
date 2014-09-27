@@ -63,9 +63,14 @@ jQuery(document).ready(function($)
 			
 			  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			
-			  var contentString = '<iframe scrolling="no" class="foo"  frameBorder="0" src="http://localhost:5050/google/plupload/examples/jquery/jquery_ui_widget.html" width="650px" height="360px" />';
+			//var contentString = '<iframe scrolling="no" class="foo"  frameBorder="0" src="http://localhost:5050/google/plupload/examples/jquery/jquery_ui_widget.html" width="650px" height="360px" />';
+			
+			//var contentString = '<div style="width: 300px; padding:10px;"><h3 style="padding-bottom: 5px;"  class="vc_main-color">Our Headquarter</h3><p>Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.<br/></p></div>';
+			
+			var contentString = ' <div class="child-menu"><div class="title"> Departments </div><div class="content-list"><div data-rel="scroll"><ul class="list-wrapper pd-lr-10"><li><a href="#"><div class="menu-icon vd_yellow"></div><div class="menu-text"> Management </div></a></li><li><a href="#"><div class="menu-icon vd_blue"></div><div class="menu-text"> Finance </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Production </div></a></li><li><a href="#"><div class="menu-icon vd_green"></div><div class="menu-text"> Marketing </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Human Resources </div></a></li></ul></div></div></div> ';
 			
 			  var infowindow = new google.maps.InfoWindow({
+			  	
 			      content: contentString
 			  });
 			
@@ -75,7 +80,7 @@ jQuery(document).ready(function($)
 			      title: 'Uluru (Ayers Rock)'
 			  });
 			  
-			  google.maps.event.addListener(marker, 'mousemove', function() {
+			  google.maps.event.addListener(marker, 'click', function() {
 			    infowindow.open(map,marker);
 			  });
 			
