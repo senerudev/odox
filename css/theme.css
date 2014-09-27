@@ -6333,12 +6333,14 @@
 .login-layout .vd_login-page
 {
 	width:380px;
-	margin:0 auto 60px
+	margin:0 auto 60px;
+	background:#fff;
 }
 .login-layout .vd_register-page
 {
 	width:600px;
-	margin:0 auto 60px
+	margin:0 auto 60px;
+	background:#ffffff;
 }
 .login-layout .vd_register-page .heading
 {
@@ -6352,7 +6354,8 @@
 .login-layout .logo
 {
 	margin-bottom:5px;
-	text-shadow:1px -1px 0 #fff
+	text-shadow:1px -1px 0 #fff;
+	margin-top:20px;
 }
 .login-layout .panel
 {
