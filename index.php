@@ -515,13 +515,36 @@
      	<div class="child-menu"  data-action="click-target">
             <ul>
                 <li>
-                    <a href="user_shared_repo/hack_2014.docx">
-                        <span class="menu-text">Doc 1 </span>
-                        <span class="menu-badge"><!-- <span class="badge vd_bg-yellow ">NEW</span> -->
-                        	<img src="img/icons/icon-doc.gif" />
-                        </span>  
+                    <!-- <a href="user_shared_repo/hack_2014.docx"> -->
+                    	
+                    	<a href="http://www.amitpatil.me/wp-content/uploads/2012/05/drag_drop_file_upload.jpg" id="dragout" class="dragme" draggable="true" data-downloadurl="application/jpg:drag_drop_file_upload.jpg:http://www.amitpatil.me/wp-content/uploads/2012/05/drag_drop_file_upload.jpg">Doc 1
+                    	
+                        <!-- <span class="menu-text">Doc 1 </span> -->
                     </a>
-                </li>              
+                </li>   
+                
+                <script type="text/javascript">
+		var files = [document.getElementById("dragout"),document.getElementById("dragout2"),document.getElementById("dragout3")],
+			fileDetails = [];
+		
+		// Some forward thinking, utilise the custom data attribute to extend attributes available.
+		if(typeof files[0].dataset === "undefined") {
+			// Grab it the old way
+			fileDetails[0] = files[0].getAttribute("data-downloadurl");
+			fileDetails[1] = files[1].getAttribute("data-downloadurl");
+		} else {
+			fileDetails[0] = files[0].dataset.downloadurl;
+			fileDetails[1] = files[1].dataset.downloadurl;
+		}
+		
+		files[0].addEventListener("dragstart",function(evt){
+			evt.dataTransfer.setData("DownloadURL",fileDetails[0]);
+		},false);
+		files[1].addEventListener("dragstart",function(evt){
+			evt.dataTransfer.setData("DownloadURL",fileDetails[1]);
+		},false);
+	</script>
+	           
                 <li>
                     <a href="index-ecommerce.php.html">
                         <span class="menu-text">Doc 2</span> 
@@ -686,8 +709,50 @@
 </ul>
 <!-- Head menu search form ends -->         </div>             
     </div>
-    <div class="navbar-spacing clearfix">
-    </div>
+    <!-- <div class="navbar-spacing clearfix"></div> -->
+    <br /><br />
+    	<h3 class="menu-title hide-nav-medium hide-nav-small">Recived Files</h3>
+        <div class="vd_menu">
+        	 <ul>
+    <li>
+    	<a href="javascript:void(0);" data-action="click-trigger">
+        	<span class="menu-icon"><i class="fa fa-dashboard"></i></span> 
+            <span class="menu-text">Expand</span>  
+            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+       	</a>
+     	<div class="child-menu"  data-action="click-target">
+            <ul>
+	           
+                <li>
+                    <a href="index-ecommerce.php.html">
+                        <span class="menu-text">Doc 2</span> 
+                        <span class="menu-badge"><!-- <span class="badge vd_bg-yellow ">NEW</span> -->
+                        	<img src="img/icons/icon-doc.gif" />
+                        </span> 
+                    </a>
+                </li> 
+                <li>
+                    <a href="index-analytics.php.html">
+                        <span class="menu-text">Image 1</span>  
+                        
+                        <span class="menu-badge"><!-- <span class="badge vd_bg-yellow ">NEW</span> -->
+                        	<img src="img/icons/image-icon.gif" />
+                        </span>
+                    </a>
+                </li> 
+                <li>
+                    <a href="index-event-management.php.html">
+                        <span class="menu-text">Pdf 1</span>  
+                        <span class="menu-badge"><!-- <span class="badge vd_bg-yellow ">NEW</span> -->
+                        	<img src="img/icons/pdf-icon.png" />
+                        </span>
+                    </a>
+                </li>                                                                                                  
+            </ul>   
+      	</div>
+    </li>  
+    	</div>
+    
     <!-- <div class="vd_menu vd_navbar-bottom-widget">
         <ul>
             <li>
@@ -698,7 +763,7 @@
                 
             </li>
         </ul>
-    </div> -->     
+    </div>  -->  
 </div>    <div class="vd_navbar vd_nav-width vd_navbar-chat vd_bg-black-80 vd_navbar-right   ">
 	<div class="navbar-tabs-menu clearfix">
 			<span class="expand-menu" data-action="expand-navbar-tabs-menu">
@@ -1949,6 +2014,7 @@ function showFileUploader(){
 }
 
 </script>
+
 <!-- Specific Page Scripts END -->
 
 
