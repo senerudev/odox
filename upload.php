@@ -58,6 +58,8 @@ if (isset($_REQUEST["name"])) {
 	$fileName = uniqid("file_");
 }
 
+/*
+
 $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
 
 // Chunking might be enabled
@@ -123,3 +125,5 @@ if (!$chunks || $chunk == $chunks - 1) {
 
 // Return Success JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+
+*/

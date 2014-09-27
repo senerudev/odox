@@ -39,7 +39,7 @@ $(function() {
 	$("#uploader").plupload({
 		// General settings
 		runtimes : 'html5,flash,silverlight,html4',
-		url : 'upload.php',
+		url : 'createRepo.php',
 
 		// User can upload no more then 20 files in one go (sets multiple_queues to false)
 		max_file_count: 20,

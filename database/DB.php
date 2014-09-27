@@ -53,57 +53,17 @@ class DB {
 
 	public function getLocations()
 	{
-		
 		if(null !== $this->getSession('userId')){
-			$query = "SELECT distinct t1.description AS lev1,t1.geoCode AS lev1geoCode ,t2.description AS lev2,t2.geoCode AS lev2geoCode ,t3.description AS lev3,t3.geoCode AS lev3geoCode ,t4.description AS lev4,t4.geoCode AS lev4geoCode FROM hierarchy AS t1 LEFT JOIN hierarchy AS t2 ON t2.Parent_hierachyId = t1.hierachyId LEFT JOIN hierarchy AS t3 ON t3.Parent_hierachyId = t2.hierachyId LEFT JOIN hierarchy AS t4 ON t4.Parent_hierachyId = t3.hierachyId WHERE t1.Parent_hierachyId in (".$this->getAccessLevel().") order by lev1,lev2,lev3,lev4";
+			$query = "SELECT * FROM `Location` WHERE `organizationId`=1";//".$this->getSession('organizationId');
 			$result = mysqli_query($this->connection,$query);
+			$data = array();
+			while($row = mysqli_fetch_array($result)){
+				$data[$row['locationName']] = $row['geoLocation'];
+			}
 			
-			$tag = "";
-			while($row = mysqli_fetch_array($result)) {
-				
-				if($row['lev1'] !== ""){
-					if(null !== $row['lev2']){
-						if(null !== $row['lev3']){
-							if(null !== $row['lev4']){
-								$tag .= $row["lev4"].":".$row["lev4geoCode"].";";
-							}else{
-								$tag .= $row["lev3"].":".$row["lev3geoCode"].";";
-							}
-						}else{
-							$tag .= $row["lev2"].":".$row["lev2geoCode"].";";
-						}		
-					}else{
-						$tag .= $row["lev1"].":".$row["lev1geoCode"].";";
-					}	
-				}
-
-			}
-			try{
-				$rootNode = explode(";", $tag);
-				$i = 0;		$j = 1;
-				foreach ($rootNode as $key => $value) {
-					if($j < 4){
-						$secoundNode = explode(":", $rootNode[$i]);
-						if(is_array($secoundNode)){
-							$city = $secoundNode[0];
-							if($secoundNode[1] != null){
-								$location = $secoundNode[1];
-							}
-							echo("Name : ".$city." Locaion".$location);
-							echo "<hr>";
-							$i++;
-						}
-					}
-					$j++;
-				}
-			}catch(Exception $e){
-				
-			}
-
+			return $data;
 		}
 	}
-
-
 
 
 	public function setLocation($info)
@@ -123,17 +83,28 @@ class DB {
 
 	public function userLogin($username,$password)
 	{
-		$query = "SELECT * FROM user WHERE `userName`='{$username}'  and `password`='{$password}'";
+		$query = "SELECT user.userId, user.userName, user.password, user.name, user.repositoryId, user.isAdmin, user.isActive, user.locationId, user.isHR, user.isMarketing, user.isDevelopment, user.isFinance,user.organizationId,Location.geoLocation FROM user INNER JOIN Location ON Location.id=user.locationId WHERE `userName`='{$username}'  and `password`='{$password}'";
 		$result = mysqli_query($this->connection,$query);
 
 		// $userdata = array('' => , );
 		while($row = mysqli_fetch_array($result)) {
-		
 			$this->setSession('profile-name',$row["name"]);
 			$this->setSession('isAdmin',$row["isAdmin"]);
 			$this->setSession('userId',$row["userId"]);
 			$this->setSession('username',$username);
+			$this->setSession('isHR',$row["isHR"]);
+			$this->setSession('isMarketing',$row["isMarketing"]);
+			$this->setSession('isDevelopment',$row["isDevelopment"]);
+			$this->setSession('isFinance',$row["isFinance"]);
+			$this->setSession('geoLocation',$row["geoLocation"]);
+			$this->setSession('organizationId',$row["organizationId"]);
 		}
+	}
+
+	public function registerUser($userinfo)
+	{
+		$query = "";
+		
 	}
 }
 ?>
