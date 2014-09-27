@@ -6,7 +6,21 @@
 <!-- Specific Page Data -->
 
 <!-- End of Data -->
+<?php
+  include 'database/DB.php';
+  $db = new DB();
 
+  if(isset($_POST['key'])){
+      $message = $db->registerUser($_POST["email"],$_POST["password"],$_POST["firstname"],$_POST["lastname"],$_POST["website"]);
+      if($message == 'success'){
+        header('location:register.php?reg=success');
+      }elseif($message == 'exist'){
+        header('location:register.php?reg=exist');
+      }else{
+        header('location:register.php?reg=error');
+      }
+  }
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <meta charset="utf-8" />
@@ -43,7 +57,7 @@
     <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
     <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">    
-	<link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css"> 
+	  <link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css"> 
    
          
     <link href="plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
@@ -118,7 +132,8 @@
                 <div class="panel-body">
 <!--                  <div id="register-success" class="alert alert-success" style="display:none;"><i class="fa fa-exclamation-circle fa-fw"></i> Registration confirmation has been sent to your email </div>
                   <div id="register-passerror" class="alert alert-danger" style="display:none;"><i class="fa fa-exclamation-circle fa-fw"></i> Your password and Confirm password are not same </div>-->
-                  <form class="form-horizontal"  action="#" role="form" id="register-form">
+                  <form class="form-horizontal"  action="#" role="form" method="post" id="register-form">
+                  <input type="hidden" value="key" name="key" />
                   <div class="alert alert-danger vd_hidden">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
                     <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again. </div>

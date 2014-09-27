@@ -28,7 +28,8 @@ if (isset($_REQUEST["name"])) {
 
 
 $bucket = "testss4";//uniqid("odox-", true);
-echo "Creating bucket named {$bucket}\n";
+//echo "Creating bucket named {$bucket}\n";
+
 // $result = $client->createBucket(array(
 //     'Bucket' => $bucket,
 // 	'LocationConstraint' => 'ap-southeast-1'
@@ -71,15 +72,16 @@ $result = $client->putObject(array(
  Or the API documentation:
  http://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.S3.S3Client.html#_getObject
 */
-echo "Downloading that same object:\n";
+//echo "Downloading that same object:\n";
+
 $result = $client->getObject(array(
     'Bucket' => $bucket,
     'Key'    => $key
 ));
 
-echo "\n---BEGIN---\n";
-echo $result['Body'];
-echo "\n---END---\n\n";
+// echo "\n---BEGIN---\n";
+// echo $result['Body'];
+// echo "\n---END---\n\n";
 
 /*
  Buckets cannot be deleted unless they're empty. With the AWS SDK for PHP, you

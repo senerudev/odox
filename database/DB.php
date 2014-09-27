@@ -99,12 +99,26 @@ class DB {
 			$this->setSession('geoLocation',$row["geoLocation"]);
 			$this->setSession('organizationId',$row["organizationId"]);
 		}
+
+		if(null !== $this->getSession('username')){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
-	public function registerUser($userinfo)
+	public function registerUser($email,$password,$firstname,$lastname,$website)
 	{
-		$query = "";
-		
+		$query = "SELECT * from user WHERE userName = '{$email}'";
+		$result = mysqli_query($this->connection,$query);
+		$row = mysqli_fetch_array($result);
+		if(count($row) > 0){
+			return 'exist';
+		}else{
+			$query = "INSERT INTO `user` VALUES ('','{$email}','{$password}','{$firstname} {$lastname}','','','','',0,0,0,0,0,'{$website}')";
+			mysqli_query($this->connection,$query);
+			return 'success';
+		}
 	}
 }
 ?>

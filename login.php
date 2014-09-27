@@ -1,12 +1,23 @@
+
+<?php
+  include 'database/DB.php';
+$db = new DB();
+if(isset($_POST['key'])){
+  if($db->userLogin($_POST["email"],$_POST["password"])){
+    header('location:index.php');
+  }else{
+    header('location:login.php?attempt=0');
+  }
+}
+?>
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html><!--<![endif]-->
+<!--[if IE 8]>      <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>      <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html><!--<![endif]-->
 
 <!-- Specific Page Data -->
 
 <!-- End of Data -->
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <meta charset="utf-8" />
@@ -65,7 +76,7 @@
 
         
     <!-- Responsive CSS -->
-        	<link href="css/theme-responsive.min.css" rel="stylesheet" type="text/css"> 
+    <link href="css/theme-responsive.min.css" rel="stylesheet" type="text/css"> 
 
 	  
  
@@ -117,7 +128,8 @@
               <div class="panel widget">
                 <div class="panel-body">
                   <div class="login-icon entypo-icon"> <i class="icon-key"></i> </div>
-                  <form class="form-horizontal" id="login-form" action="#" role="form">
+                  <form class="form-horizontal" id="login-form" action="#" role="form" method="post">
+                    <input type="hidden" name="key" value="key" />
                   <div class="alert alert-danger vd_hidden">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
                     <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again. </div>

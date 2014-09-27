@@ -1,23 +1,20 @@
-<?php
-
-include('database/DB.php');
-$db = new DB();
-$db->userLogin('hakan','hakan');
-
-//$db->getAccessLevel();
-//$db->getAccessHirache();
-
- $db->getLocations() ;
-?>
 
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html><!--<![endif]-->
+<!--[if IE 8]>      <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>      <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html><!--<![endif]-->
 
 <!-- Specific Page Data -->
 
 <!-- End of Data -->
+
+<?php
+
+include('database/DB.php');
+$db = new DB();
+
+if(null !== $db->getSession('username')){
+?>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
@@ -451,7 +448,7 @@ $db->userLogin('hakan','hakan');
                 <img src="img/avatar/avatar-10.jpg" alt="" />               
             </span>
             <span class="mega-name">
-                Hokan <i class="fa fa-caret-down fa-fw"></i> 
+                <?php echo $db->getSession('profile-name'); ?> <i class="fa fa-caret-down fa-fw"></i> 
             </span>
         </a> 
       <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
@@ -695,7 +692,7 @@ $db->userLogin('hakan','hakan');
     <div class="vd_menu vd_navbar-bottom-widget">
         <ul>
             <li>
-                <a href="pages-logout.php.html">
+                <a href="logout.php">
                     <span class="menu-icon"><i class="fa fa-sign-out"></i></span>          
                     <span class="menu-text">Logout</span>             
                 </a>
@@ -1295,3 +1292,7 @@ $(window).load(function ()
 
 </body>
 </html>
+<?php }else{
+  header('location:login.php');
+}
+?>
