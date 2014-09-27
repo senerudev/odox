@@ -50,7 +50,7 @@
     <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">    
     <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
-    <!-- <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">     -->
+    <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">    
 	<link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css"> 
    
          
@@ -1002,7 +1002,7 @@
           <div class="vd_content-section  pd-0 clearfix">
             
             <!-- <div id="map" style="height:1000px; width:100%;"></div> -->
-            
+            <button title="" data-original-title="" type="button" class="btn vd_btn vd_bg-red" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on right </button>
             <div id="map-canvas" style="height:1000px; width:100%;"></div>
             <!-- row --> 
             
@@ -1073,7 +1073,7 @@
 <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
 <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
 <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
-<!-- <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script> -->
+<script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
 
 <script type="text/javascript" src="js/theme.js"></script>
 <script type="text/javascript" src="custom/custom.js"></script>

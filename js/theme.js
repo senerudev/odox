@@ -67,7 +67,7 @@ jQuery(document).ready(function($)
 			
 			//var contentString = '<div style="width: 300px; padding:10px;"><h3 style="padding-bottom: 5px;"  class="vc_main-color">Our Headquarter</h3><p>Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.<br/></p></div>';
 			
-			var contentString = ' <div class="child-menu"><div class="title"> Departments </div><div class="content-list"><div data-rel="scroll"><ul class="list-wrapper pd-lr-10"><li><a href="#"><div class="menu-icon vd_yellow"></div><div class="menu-text"> Management </div></a></li><li><a href="#"><div class="menu-icon vd_blue"></div><div class="menu-text"> Finance </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Production </div></a></li><li><a href="#"><div class="menu-icon vd_green"></div><div class="menu-text"> Marketing </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Human Resources </div></a></li></ul></div></div></div> ';
+			var contentString = ' <div class="child-menu"><div class="title" >Departments</div><div class="content-list"><div data-rel="scroll"><ul class="list-wrapper pd-lr-10"><li><a href="javascript:void(0);" onclick="showFileUploader()" ><div class="menu-icon vd_yellow"></div><div class="menu-text"> Management </div></a></li><li><a href="#"><div class="menu-icon vd_blue"></div><div class="menu-text"> Finance </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Production </div></a></li><li><a href="#"><div class="menu-icon vd_green"></div><div class="menu-text"> Marketing </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Human Resources </div></a></li></ul></div></div></div><button title="" data-original-title="" type="button" class="btn vd_btn vd_bg-red" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on right </button>';
 			
 			  var infowindow = new google.maps.InfoWindow({
 			  	
@@ -211,7 +211,6 @@ jQuery(document).ready(function($)
 				   Used: < data-toggle = "popover" > */	
 				$('[data-toggle^="popover"]').popover();
 		
-					
 				/* Pretty Photo. 
 				   Used: - For Grouping:  <a data-rel="prettyPhoto[portfolio-group]"> 
 						 - For Single Image: <a data-rel="prettyPhoto"> 
@@ -238,16 +237,8 @@ jQuery(document).ready(function($)
 					'height' : function(){return($(this).data('scrollheight')) },
 					'max-height': function(){return($(this).data('scrollheight')) },
 					'overflow-y' :'scroll',
-				});					
-						
+				});			
 		});
-
-							
-
-				
-
-		
-		
 		
 		/* Mega Menu Hover Checking. 
 		   Used: When Resizing Screen
@@ -264,6 +255,8 @@ jQuery(document).ready(function($)
 			}
 			
 		}
+
+
 
 		/* Resize Screen Checking 
 		   Used: When Resizing Screen
@@ -837,4 +830,12 @@ function notification(position, notif_type,icon_class,notif_title,notif_text){
 		stack: output_stack			
 		
 	});		
+}
+
+
+ // show the pop up when user click on map pointer & then show the file uploader view 
+function showFileUploader(){
+	console.log("show file uploader viewer");
+	$("#popOver").on("click",function(){ console.log("button clicked run"); });
+	//alert("ok");
 }
