@@ -1002,7 +1002,6 @@
           <div class="vd_content-section  pd-0 clearfix">
             
             <!-- <div id="map" style="height:1000px; width:100%;"></div> -->
-            <button title="" data-original-title="" type="button" class="btn vd_btn vd_bg-red" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on right </button>
             <div id="map-canvas" style="height:1000px; width:100%;"></div>
             <!-- row --> 
             
@@ -1109,6 +1108,132 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 <script type="text/javascript">
+
+		function initialize(){
+			
+			// map 
+			
+			var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+			  var mapOptions = {
+			    zoom: 4,
+			    center: myLatlng
+			  };
+			
+			  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			
+			var contentString = '<iframe scrolling="yes" class="foo"  frameBorder="0" src="iframe.html" width="650px" height="360px" />';
+			
+			//var contentString = '<div style="width: 300px; padding:10px;"><h3 style="padding-bottom: 5px;"  class="vc_main-color">Our Headquarter</h3><p>Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.<br/></p></div>';
+			
+			//var contentString = ' <div class="child-menu"><div class="title" >Departments</div><div class="content-list"><div data-rel="scroll"><ul class="list-wrapper pd-lr-10"><li><a href="javascript:void(0);" onclick="showFileUploader()" ><div class="menu-icon vd_yellow"></div><div class="menu-text"> Management </div></a></li><li><a href="#"><div class="menu-icon vd_blue"></div><div class="menu-text"> Finance </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Production </div></a></li><li><a href="#"><div class="menu-icon vd_green"></div><div class="menu-text"> Marketing </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Human Resources </div></a></li></ul></div></div></div><button title="" data-original-title="" type="button" class="btn vd_btn vd_bg-red" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on right </button>';
+			
+			  var infowindow = new google.maps.InfoWindow({
+			  	
+			      content: contentString
+			  });
+			
+			  var marker = new google.maps.Marker({
+			      position: myLatlng,
+			      map: map,
+			      title: 'Uluru (Ayers Rock)'
+			  });
+			  
+			  google.maps.event.addListener(marker, 'click', function() {
+			    infowindow.open(map,marker);
+			  });
+			
+			google.maps.event.addDomListener(window, 'load', initialize);
+			
+			// $('#map').gMap({
+		
+			 // address: 'Los Angeles, United States',
+			 // maptype: 'ROADMAP',
+			 // zoom: 14,
+			 // markers: [
+				// {
+					// address: "Los Angeles, United States",
+					// html: '<div style="width: 300px; padding:10px;"><h3 style="padding-bottom: 5px;"  class="vc_main-color">Our Headquarter</h3><p>Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.<br/></p></div>',
+					// icon: {
+						// image: "img/blue.png",
+						// iconsize: [42, 51],
+						// iconanchor: [21,51]
+					// },						
+				// }
+			 // ],
+			 // doubleclickzoom: false,
+			 // controls: {
+				 // panControl: true,
+				 // zoomControl: true,
+				 // mapTypeControl: true,
+				 // scaleControl: false,
+				 // streetViewControl: false,
+				 // overviewMapControl: false
+				 // },            
+			// });
+// 			
+			// $('#filters a').click(function(){
+				// var filter = $(this).data('filter');
+				// var lat= 0;
+				// var long = 0;
+				// switch(filter)
+				// {
+				// case "US":
+				  // lat = 40;
+				  // long = -100;
+				  // break;
+				// case "CN":
+				  // lat = 35;
+				  // long = 103;
+				  // break;
+				// case "ID":
+				  // lat = 0;
+				  // long = 117;
+				  // break;
+				// case "FR":
+				  // lat = 47;
+				  // long = 2;		  
+				  // break;
+				// }
+				// $('#map').gMap('centerAt',
+					// {
+						// latitude:lat,
+						// longitude: long,
+						// zoom: 5
+					// }
+				// );
+// 				
+// 			
+			// });	
+			
+			
+			
+			// Nav-toggle Active
+			if ($('body').hasClass('nav-medium')) {
+				$('[data-action^="nav-medium"]').addClass('active');
+			}
+			if ($('body').hasClass('nav-small')) {
+				$('[data-action^="nav-small"]').addClass('active');
+			}	
+			
+			// Active Menu
+			var active_page = $('body').attr('data-active');
+			$('.navbar-menu .vd_menu > ul > li#'+active_page).addClass('active');
+			$('.navbar-menu .vd_menu > ul > li#'+active_page+' > a').append('<span class="menu-active"><i class="icon-caret-left"></i></span>');
+			
+			
+			calculateContentHeight();
+	
+			if ($(window).width() <= desktop_width ) {
+					checkWindowTablet();
+			}else{
+					checkWindowDesktop();
+			};									
+
+			checkStickyMenu();
+			checkBackTop();
+			checkMegaMenu();
+		}
+
 $(window).load(function () 
 	{
 		$.fn.UseTooltip = function () {
