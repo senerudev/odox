@@ -74,16 +74,7 @@
     <!-- Custom CSS -->
     <link href="custom/custom.css" rel="stylesheet" type="text/css">
 
-	<!-- php uploader -->
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
-	<link rel="stylesheet" href="css/jquery.ui.plupload.css" type="text/css" />
 	
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-	
-	<!-- production -->
-	<script type="text/javascript" src="js/plupload.full.min.js"></script>
-	<script type="text/javascript" src="js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 
 
     <!-- Head SCRIPTS -->
@@ -97,6 +88,27 @@
       <script type="text/javascript" src="js/respond.min.js"></script>     
     <![endif]-->
     
+    <style>
+    	html{
+    		background:#ffffff !important;
+    	}
+    	.vd_body{
+    		background:#ffffff !important;
+    	}
+    	.content-list .list-wrapper>li{
+    		width: :150px !important;
+    	}
+    	.content-list .list-wrapper > li:hover{
+    		width: 160px;
+    	}
+    	.vd_status-widget a{
+    		/*padding : 0px 15px 0px 15px;	*/
+    	}
+    	.plupload_wrapper{
+    		min-width:400px !important;
+    	}
+    </style>
+    
 </head>    
 
 <body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard "  data-smooth-scrolling="1">     
@@ -105,7 +117,7 @@
 <!-- dsfsdfsd fsdf sd -->
 <!-- http://localhost:5050/google/plupload/examples/jquery/jquery_ui_widget.html -->
 
-	<div class="" style="width: 300px; float:left;">
+	<div class="" style="float:left;">
         <div class=" " style="background: #ffffff">
           <div class="panel-heading no-title"> </div>
           <div class="panel-body">
@@ -113,65 +125,44 @@
             <div class="content-list content-image">
               <ul class="list-wrapper no-bd-btm">
                 <li> 
-                	<div class="vd_status-widget vd_bg-red  widget">
-					   	<a href="#" class="panel-body">                                
-					        <div class="clearfix">
-				        </div>   
-				        <div class="menu-text clearfix">
-				            Production
+                	<div class="vd_status-widget vd_bg-green  widget" style="width: 150px">
+					   	<a href="#" class="panel-body"  id="development" >                                
+				        <div class=" clearfix">
+				            <b>Development</b>
 				        </div>  
 				     </a>                                                                
 					</div>
                   </li>
                   
                   <li> 
-                	<div class="vd_status-widget vd_bg-red  widget">
-					   	<a href="#" class="panel-body">                                
-					        <div class="clearfix">
-				        </div>   
-				        <div class="menu-text clearfix">
-				            Production
+                	<div class="vd_status-widget vd_bg-yellow  widget" style="width: 150px">
+					   	<a href="#" class="panel-body" id="finance">                                
+				        <div class=" clearfix">
+				            <b>Finance</b>
 				        </div>  
 				     </a>                                                                
 					</div>
                   </li>
                   
                   <li> 
-                	<div class="vd_status-widget vd_bg-red  widget">
-					   	<a href="#" class="panel-body">                                
-					        <div class="clearfix">
-				        </div>   
-				        <div class="menu-text clearfix">
-				            Production
+                	<div class="vd_status-widget vd_bg-blue  widget" style="width: 150px">
+					   	<a href="#" class="panel-body" id="marketing">                                
+				        <div class=" clearfix">
+				            <b>Marketing</b>
 				        </div>  
 				     </a>                                                                
 					</div>
                   </li>
                   
                   <li> 
-                	<div class="vd_status-widget vd_bg-red  widget">
-					   	<a href="#" class="panel-body">                                
-					        <div class="clearfix">
-				        </div>   
-				        <div class="menu-text clearfix">
-				            Production
+                	<div class="vd_status-widget vd_bg-red  widget" style="width: 150px">
+					   	<a href="#" class="panel-body" id="hr" >                                
+				        <div class=" clearfix" >
+				            <b>HR</b>
 				        </div>  
 				     </a>                                                                
 					</div>
                   </li>
-                  
-                  <li> 
-                	<div class="vd_status-widget vd_bg-red  widget">
-					   	<a href="#" class="panel-body">                                
-					        <div class="clearfix">
-				        </div>   
-				        <div class="menu-text clearfix">
-				            Production
-				        </div>  
-				     </a>                                                                
-					</div>
-                  </li>
-               
               </ul>
             </div>
           </div>
@@ -179,17 +170,24 @@
         <!-- Panel Widget --> 
 	</div>
 	
-	<div class="" style="width: 300px; float:left; margin-left: 20px">
-		 <div class="panel widget light-widget panel-bd-top vd_bdt-yellow">
+	
+	<div class="" style="width: 300px; float:left; margin-left: 20px; margin-top: 40px">
+		 <div class="">
 		 	<form id="form" method="post" action="dump.php">
-				<div id="uploader">
-					<p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+		 		
+		 		<div id="hint">Please select an department to add files</div>
+		 		
+				<div id="uploader" style="height: 300px">
+					<!-- <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p> -->
 				</div>
 				<br />
-				<input type="submit" value="Submit" />
+				<!-- <input type="submit" value="Submit" class="btn btn-primary" style="float: left"/> -->
 			</form>
 		 </div>
 	</div>
+	
+	
+	
 
 
 
@@ -198,11 +196,11 @@
 
 <!-- Javascript =============================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="js/jquery.js"></script> 
+<!-- <script type="text/javascript" src="js/jquery.js"></script>  -->
 <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>      
 <![endif]-->
-<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
 <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
@@ -216,34 +214,166 @@
 <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
 <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
-<script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+<script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script> -->
 <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
 
-<script type="text/javascript" src="js/theme.js"></script>
-<script type="text/javascript" src="custom/custom.js"></script>
+<!-- <script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript" src="custom/custom.js"></script> -->
  
-<!-- Specific Page Scripts Put Here -->
+<!-- <!-- Specific Page Scripts Put Here -->
 <!-- Flot Chart  -->
-<script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+<!-- <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
 <script type="text/javascript" src="plugins/flot/jquery.flot.resize.js"></script>
 <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
 <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
-<script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
+<script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script> -->
 
 <!-- Vector Map -->
-<script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
 
 
 <!-- Intro JS (Tour) -->
-<script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
+<!-- <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script> -->
 
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="css/jquery.ui.plupload.css" type="text/css" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+<!-- production -->
+<script type="text/javascript" src="js/plupload.full.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 
 
 
 <script type="text/javascript">
+// Initialize the widget when the DOM is ready
+$(function() {
+
+	$("#uploader").css("display","none");
+	
+	$("#finance").on("click",function(){
+	
+		$("#hint").css("display","none");
+		$("#uploader").css("display","block");
+		
+		$("#finance").css("background-color","transparent");
+		$("#development").css("background-color","#000");
+		$("#marketing").css("background-color","#000");
+		$("#hr").css("background-color","#000");
+	});
+	
+	$("#hr").on("click",function(){
+		
+		$("#hint").css("display","none");
+		$("#uploader").css("display","block");
+		
+		$("#hr").css("background-color","transparent");
+		$("#development").css("background-color","#000");
+		$("#marketing").css("background-color","#000");
+		$("#finance").css("background-color","#000");
+	});
+	
+	$("#development").on("click",function(){
+		
+		$("#hint").css("display","none");
+		$("#uploader").css("display","block");
+		
+		$("#development").css("background-color","transparent");
+		$("#finance").css("background-color","#000");
+		$("#marketing").css("background-color","#000");
+		$("#hr").css("background-color","#000");
+	});
+	
+	$("#marketing").on("click",function(){
+		
+		$("#hint").css("display","none");
+		$("#uploader").css("display","block");
+		
+		$("#marketing").css("background-color","transparent");
+		$("#development").css("background-color","#000");
+		$("#finance").css("background-color","#000");
+		$("#hr").css("background-color","#000");
+	});
+	
+	
+	
+	
+	$("#uploader").plupload({
+		// General settings
+		runtimes : 'html5,flash,silverlight,html4',
+		url : 'upload.php',
+
+		// User can upload no more then 20 files in one go (sets multiple_queues to false)
+		max_file_count: 20,
+		
+		chunk_size: '1mb',
+
+		// Resize images on clientside if we can
+		resize : {
+			width : 200, 
+			height : 200, 
+			quality : 90,
+			crop: true // crop to exact dimensions
+		},
+		
+		filters : {
+			// Maximum file size
+			max_file_size : '1000mb',
+			// Specify what files to browse for
+			mime_types: [
+				{title : "Image files", extensions : "jpg,gif,png"},
+				{title : "Zip files", extensions : "zip"},
+				{title : "PDF files", extensions : "pdf"},
+				{title : "DOC files", extensions : "doc"},
+				{title : "CSV files", extensions : "csv"}
+			]
+		},
+
+		// Rename files by clicking on their titles
+		rename: true,
+		
+		// Sort files
+		sortable: true,
+
+		// Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
+		dragdrop: true,
+
+		// Views to activate
+		views: {
+			list: true,
+			thumbs: true, // Show thumbs
+			active: 'thumbs'
+		},
+
+		// Flash settings
+		flash_swf_url : 'js/Moxie.swf',
+
+		// Silverlight settings
+		silverlight_xap_url : 'js/Moxie.xap'
+	});
 
 
+	// Handle the case when form was submitted before uploading has finished
+	$('#form').submit(function(e) {
+		// Files in queue upload them first
+		if ($('#uploader').plupload('getFiles').length > 0) {
+
+			// When all files are uploaded submit form
+			$('#uploader').on('complete', function() {
+				$('#form')[0].submit();
+			});
+
+			$('#uploader').plupload('start');
+		} else {
+			alert("You must have at least one file in the queue.");
+		}
+		return false; // Keep the form from submitting
+	});
+});
+</script>
 
 </body>
 </html>
