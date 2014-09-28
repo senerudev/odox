@@ -83,7 +83,7 @@ class DB {
 
 	public function userLogin($username,$password)
 	{
-		$query = "SELECT user.userId, user.userName, user.password, user.name, user.repositoryId, user.isAdmin, user.isActive, user.locationId, user.isHR, user.isMarketing, user.isDevelopment, user.isFinance,user.organizationId,Location.geoLocation FROM user INNER JOIN Location ON Location.id=user.locationId WHERE `userName`='{$username}'  and `password`='{$password}'";
+		$query = "SELECT user.userId, user.userName, user.password, user.name, user.repositoryId, user.isAdmin, user.isActive, user.locationId, user.isHR, user.isMarketing, user.isDevelopment, user.isFinance,user.organizationId,Location.geoLocation FROM user INNER JOIN Location ON Location.id=user.locationId WHERE `userName`='prasad@seneru.com'  and `password`='prasad'";
 		$result = mysqli_query($this->connection,$query);
 
 		// $userdata = array('' => , );
