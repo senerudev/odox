@@ -126,5 +126,12 @@ class DB {
 			$query = "INSERT INTO `localrepo` VALUES ('','{$buket}','{$filename}','{$filepath}','{$location}','{$username}')";
 			mysqli_query($this->connection,$query);
 	}
+
+	public function saveUrls($url)
+	{
+		$query = "INSERT INTO `localrepo` VALUES ('','','','{$url}','{$url}','')";
+		mysqli_query($this->connection,$query);	
+	}
 }
+
 ?>
