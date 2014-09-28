@@ -1,8 +1,19 @@
 <?php
-include 'database/DB.php';
-$db = new DB();
+$con=mysqli_connect("54.169.80.82","root","gfzeoqfo","odox");
+// Check connection
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
-$array = $db->getData();
+        $query = "SELECT * FROM dataaws";
+		$result = mysqli_query($this->connection,$query);
+		$array = array();	
+		while ($row = mysqli_fetch_array($result)) {
+			$array['key'] = $row['key']; 
+			$array['secret'] = $row['secret']; 
+			$array['region'] = $row['region']; 
+		}
+
 
 return array(
     // Bootstrap the configuration file with AWS specific features
