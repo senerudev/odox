@@ -120,5 +120,11 @@ class DB {
 			return 'success';
 		}
 	}
+
+	public function putFile($buket,$filename,$filepath,$location)
+	{		$username = $this->getSession('userName');
+			$query = "INSERT INTO `localrepo` VALUES ('','{$buket}','{$filename}','{$filepath}','{$location}','{$username}')";
+			mysqli_query($this->connection,$query);
+	}
 }
 ?>

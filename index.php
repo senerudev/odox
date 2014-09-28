@@ -1162,15 +1162,33 @@ jQuery(document).ready(function($)
 		
 		function initialize(){
 			
+ var locations = [
+          ['Bondi Beach', -33.890542, 151.274856, 4],
+          ['Coogee Beach', -33.923036, 151.259052, 5],
+          ['Cronulla Beach', -34.028249, 151.157507, 3],
+          ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+          ['Maroubra Beach', -33.950198, 151.259302, 1]
+      ];
+      
+      <?php 
+      $str = "";
+      foreach ($db->getLocations() as $key => $value) {
+           $location = explode(",", $value);
+          // $str .= "['{$key}', {$location[0]}, {$location[1]}, ],"
+      }
+
+      ?>
 			// map 
-			
-			var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+     
+
+			// var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			  var mapOptions = {
 			    zoom: 4,
-			    center: myLatlng
+          center: new google.maps.LatLng(-33.92, 151.25),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
 			  };
 			
-			  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			
 			var contentString = '<iframe scrolling="yes" class="foo"  frameBorder="0" src="iframe.html" width="650px" height="360px" />';
 			
@@ -1178,20 +1196,38 @@ jQuery(document).ready(function($)
 			
 			//var contentString = ' <div class="child-menu"><div class="title" >Departments</div><div class="content-list"><div data-rel="scroll"><ul class="list-wrapper pd-lr-10"><li><a href="javascript:void(0);" onclick="showFileUploader()" ><div class="menu-icon vd_yellow"></div><div class="menu-text"> Management </div></a></li><li><a href="#"><div class="menu-icon vd_blue"></div><div class="menu-text"> Finance </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Production </div></a></li><li><a href="#"><div class="menu-icon vd_green"></div><div class="menu-text"> Marketing </div></a></li><li><a href="#"><div class="menu-icon vd_red"></div><div class="menu-text"> Human Resources </div></a></li></ul></div></div></div><button title="" data-original-title="" type="button" class="btn vd_btn vd_bg-red" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on right </button>';
 			
-			  var infowindow = new google.maps.InfoWindow({
+			  // var infowindow = new google.maps.InfoWindow({
 			  	
-			      content: contentString
-			  });
-			
-			  var marker = new google.maps.Marker({
-			      position: myLatlng,
-			      map: map,
-			      title: 'Uluru (Ayers Rock)'
-			  });
+			  //     content: contentString
+			  // });
+			var marker;
+      var i = 0;
+      var infowindow = new google.maps.InfoWindow();
+
+			  // var marker = new google.maps.Marker({
+			  //     position: myLatlng,
+			  //     map: map,
+			  //     title: 'Uluru (Ayers Rock)'
+			  // });
 			  
-			  google.maps.event.addListener(marker, 'click', function() {
-			    infowindow.open(map,marker);
-			  });
+			  // google.maps.event.addListener(marker, 'click', function() {
+			  //   infowindow.open(map,marker);
+			  // });
+
+      for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', (function (marker, i) {
+              return function () {
+                  infowindow.setContent(contentString);
+                  infowindow.open(map, marker);
+              }
+          })(marker, i));
+      }
+
 			
 			google.maps.event.addDomListener(window, 'load', initialize);
 			

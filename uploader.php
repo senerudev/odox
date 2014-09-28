@@ -63,7 +63,8 @@ $(function() {
 				{title : "Zip files", extensions : "zip"},
 				{title : "PDF files", extensions : "pdf"},
 				{title : "DOC files", extensions : "doc"},
-				{title : "CSV files", extensions : "csv"}
+				{title : "CSV files", extensions : "csv"},
+				{title : "PPT files", extensions : "pptx"}
 			]
 		},
 

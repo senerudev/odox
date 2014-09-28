@@ -1,26 +1,29 @@
 <?php
-/**
- * upload.php
- *
- * Copyright 2013, Moxiecode Systems AB
- * Released under GPL License.
- *
- * License: http://www.plupload.com/license
- * Contributing: http://www.plupload.com/contributing
- */
-
-#!! IMPORTANT: 
-#!! this file is just an example, it doesn't incorporate any security checks and 
-#!! is not recommended to be used in production environment as it is. Be sure to 
-#!! revise it and customize to your needs.
+// header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+// header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+// header("Cache-Control: no-store, no-cache, must-revalidate");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
 
 
-// Make sure file is not cached (as it happens for example on iOS devices)
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-header("Cache-Control: no-store, no-cache, must-revalidate");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+
+require 'vendor/autoload.php';
+
+use Aws\Common\Aws;
+// Create a service builder using a configuration file
+	$aws = Aws::factory('awsConfig.php');
+	// Get the client from the builder by namespace
+	$client = $aws->get('S3');
+// Create a valid bucket and use a LocationConstraint
+
+// Get a file name
+if (isset($_REQUEST["name"])) {
+  $fileName = $_REQUEST["name"];
+} elseif (!empty($_FILES)) {
+  $fileName = $_FILES["file"]["name"];
+} else {
+  $fileName = uniqid("file_");
+}
 
 /* 
 // Support CORS
@@ -65,6 +68,12 @@ $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
 // Chunking might be enabled
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
 $chunks = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 0;
+
+
+
+
+// $db = new DB();
+// $db->putFile($bucket,$fileName,$filePath,$_GET['location']));
 
 
 // Remove old temp files	
@@ -122,6 +131,50 @@ if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
 }
+
+$bucket = "seneruorg2";//uniqid("odox-", true);
+//echo "Creating bucket named {$bucket}\n";
+
+// $result = $client->createBucket(array(
+//     'Bucket' => $bucket,
+// 	'LocationConstraint' => 'ap-southeast-1'
+// ));
+
+// // Wait until the bucket is created
+// $client->waitUntilBucketExists(array('Bucket' => $bucket));
+
+//https://s3-ap-southeast-1.amazonaws.com/odox-5426224320afe2.21336746/hello_world.txt
+$key = $fileName;
+// echo "Creating a new object with key {$key}\n";
+// $result = $client->putObject(array(
+//     'Bucket' => $bucket,
+//     'Key'    => $key,
+//     'Body'   => "Hello World!"
+// ));
+
+// Upload an object by streaming the contents of a file
+// $pathToFile should be absolute path to a file on disk
+$result = $client->putObject(array(
+    'Bucket'     => $bucket,
+    'Key'        => $fileName,
+    'SourceFile' => $filePath
+));
+
+
+
+$result = $client->getObject(array(
+    'Bucket' => $bucket,
+    'Key'    => $key
+));
+
+$result = $client->getObject(array(
+    'Bucket' => $bucket,
+    'Key'    => 'data.txt',
+    'SaveAs' => '/tmp/data.txt'
+));
+
+// Contains an EntityBody that wraps a file resource of /tmp/data.txt
+echo $result['Body']->getUri() . "\n";
 
 // Return Success JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');

@@ -57,11 +57,11 @@ $key = $fileName;
 
 // Upload an object by streaming the contents of a file
 // $pathToFile should be absolute path to a file on disk
-$result = $client->putObject(array(
-    'Bucket'     => $bucket,
-    'Key'        => "6-house-in-green-field.jpg",
-    'SourceFile' => "http://freedwallpaper.com/wp-content/uploads/2014/03/6-house-in-green-field.jpg"
-));
+// $result = $client->putObject(array(
+//     'Bucket'     => $bucket,
+//     'Key'        => "6-house-in-green-field.jpg",
+//     'SourceFile' => "http://freedwallpaper.com/wp-content/uploads/2014/03/6-house-in-green-field.jpg"
+// ));
 
 /*
  Download the object and read the body directly.
@@ -82,6 +82,17 @@ $result = $client->getObject(array(
 // echo "\n---BEGIN---\n";
 // echo $result['Body'];
 // echo "\n---END---\n\n";
+
+$result = $client->getObject(array(
+    'Bucket' => $bucket,
+    'Key'    => '209.jpg',
+    'SaveAs' => '/tmp/209.jpg'
+));
+
+// Contains an EntityBody that wraps a file resource of /tmp/data.txt
+echo $result['Body']->getUri() . "\n";
+// > /tmp/data.txt
+
 
 /*
  Buckets cannot be deleted unless they're empty. With the AWS SDK for PHP, you

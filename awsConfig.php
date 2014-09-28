@@ -9,8 +9,8 @@ return array(
         // providing a default region setting.
         'default_settings' => array(
             'params' => array(
-                 'key'    => 'AKIAJZ5TBXXHM7DK5JZA',
-                'secret' => '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',
+                 'key'    => 'AKIAJHDLVCAVM5R4OFAA',
+                'secret' => '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',
                 'region' => 'ap-southeast-1'
             )
         )
