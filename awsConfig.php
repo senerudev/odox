@@ -12,7 +12,7 @@ return array(
         // overriding 'default_settings' with our default credentials and
         // providing a default region setting.
         'default_settings' => array(
-            'params' => $array;
+            'params' => $array
         )
     )
 );
