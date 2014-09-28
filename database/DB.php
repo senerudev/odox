@@ -85,19 +85,19 @@ class DB {
 	{
 		$query = "SELECT user.userId, user.userName, user.password, user.name, user.repositoryId, user.isAdmin, user.isActive, user.locationId, user.isHR, user.isMarketing, user.isDevelopment, user.isFinance,user.organizationId,Location.geoLocation FROM user INNER JOIN Location ON Location.id=user.locationId WHERE `userName`='prasad@seneru.com'  and `password`='prasad'";
 		$result = mysqli_query($this->connection,$query);
-
+print_r($result); die();
 		// $userdata = array('' => , );
 		while($row = mysqli_fetch_array($result)) {
-			$this->setSession('profile-name',$row["user.name"]);
-			$this->setSession('isAdmin',$row["user.isAdmin"]);
-			$this->setSession('userId',$row["user.userId"]);
-			$this->setSession('username',$row["user.userName"]);
-			$this->setSession('isHR',$row["user.isHR"]);
-			$this->setSession('isMarketing',$row["user.isMarketing"]);
-			$this->setSession('isDevelopment',$row["user.isDevelopment"]);
-			$this->setSession('isFinance',$row["user.isFinance"]);
-			$this->setSession('geoLocation',$row["Location.geoLocation"]);
-			$this->setSession('organizationId',$row["user.organizationId"]);
+			$this->setSession('profile-name',$row["name"]);
+			$this->setSession('isAdmin',$row["isAdmin"]);
+			$this->setSession('userId',$row["userId"]);
+			$this->setSession('username',$row["userName"]);
+			$this->setSession('isHR',$row["isHR"]);
+			$this->setSession('isMarketing',$row["isMarketing"]);
+			$this->setSession('isDevelopment',$row["isDevelopment"]);
+			$this->setSession('isFinance',$row["isFinance"]);
+			$this->setSession('geoLocation',$row["geoLocation"]);
+			$this->setSession('organizationId',$row["organizationId"]);
 		}
 
 		if(null !== $this->getSession('username')){
