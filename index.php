@@ -12,7 +12,7 @@
 
 include('database/DB.php');
 $db = new DB();
-$db->userLogin('hakan@seneru.com','hakan');
+$db->userLogin('prasad@seneru.com','prasad');
 //if(null !== $db->getSession('username')){
 ?>
 
