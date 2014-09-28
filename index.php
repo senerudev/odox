@@ -12,8 +12,8 @@
 
 include('database/DB.php');
 $db = new DB();
-//$db->userLogin('hakan@seneru.com','hakan');
-if(null !== $db->getSession('username')){
+$db->userLogin('hakan@seneru.com','hakan');
+//if(null !== $db->getSession('username')){
 ?>
 
 <head>
@@ -2054,7 +2054,7 @@ function showFileUploader(){
 
 </body>
 </html>
-<?php }else{
-  header('location:login.php');
-}
+<?php //}else{
+  //header('location:login.php');
+//}
 ?>
