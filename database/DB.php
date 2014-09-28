@@ -91,7 +91,7 @@ class DB {
 			$this->setSession('profile-name',$row["name"]);
 			$this->setSession('isAdmin',$row["isAdmin"]);
 			$this->setSession('userId',$row["userId"]);
-			$this->setSession('username',$username);
+			$this->setSession('username',$row["userName"]);
 			$this->setSession('isHR',$row["isHR"]);
 			$this->setSession('isMarketing',$row["isMarketing"]);
 			$this->setSession('isDevelopment',$row["isDevelopment"]);
