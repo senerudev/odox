@@ -132,6 +132,20 @@ class DB {
 		$query = "INSERT INTO `localrepo` VALUES ('','','','{$url}','{$url}','')";
 		mysqli_query($this->connection,$query);	
 	}
+	
+	public function getData()
+	{
+		$query = "SELECT * FROM dataaws";
+		$result = mysqli_query($this->connection,$query);
+		$array = array();	
+		while ($row = mysqli_fetch_array($result)) {
+			$array['key'] = $row['key']; 
+			$array['secret'] = $row['secret']; 
+			$array['region'] = $row['region']; 
+		}
+
+		return $array;
+	}
 }
 
 ?>
