@@ -9,7 +9,8 @@ class DB {
 		try{
 			$this->connection = mysqli_connect(Configuration::HOSTNAME,Configuration::USERNAME,Configuration::PASSWORD,Configuration::DATABASENAME);	
 			if (mysqli_connect_errno()) {
-			  $this->connection = null;
+			  echo 'Error'; 
+			  //$this->connection = null;
 			}
 		}catch(Exception $e){
 			$this->connection = null;
