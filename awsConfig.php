@@ -1,4 +1,8 @@
 <?php
+include 'database/DB.php';
+$db = new DB();
+
+$array = $db->getData();
 
 return array(
     // Bootstrap the configuration file with AWS specific features
@@ -8,11 +12,7 @@ return array(
         // overriding 'default_settings' with our default credentials and
         // providing a default region setting.
         'default_settings' => array(
-            'params' => array(
-                 'key'    => 'AKIAJHDLVCAVM5R4OFAA',
-                'secret' => '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',
-                'region' => 'ap-southeast-1'
-            )
+            'params' => $array;
         )
     )
 );
