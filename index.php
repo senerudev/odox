@@ -12,8 +12,7 @@
 
 include('database/DB.php');
 $db = new DB();
-$db->userLogin('prasad@seneru.com','prasad');
-//if(null !== $db->getSession('username')){
+if(null !== $db->getSession('username')){
 ?>
 
 <head>
@@ -448,7 +447,7 @@ $db->userLogin('prasad@seneru.com','prasad');
                 <img src="img/avatar/avatar-10.jpg" alt="" />               
             </span>
             <span class="mega-name">
-                <?php echo $db->getSession('profile-name'); ?> <i class="fa fa-caret-down fa-fw"></i> 
+                Udaya Sri<?php //echo $db->getSession('profile-name'); ?> <i class="fa fa-caret-down fa-fw"></i> 
             </span>
         </a> 
       <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
@@ -1228,24 +1227,20 @@ jQuery(document).ready(function($)
 		function initialize(){
 			
  var locations = [
+           ['thailand' , 14.5543581,121.0172997 ,7],
+           [ 'Australia',-18.8933393,122.632061,6],
+           ['pilipine', 12.890091,115.5157791,5],
+          ['Japan Tokio',35.673343,139.710388,4],
+          ['India Dhilli',28.6469655,77.0932634,3],
           ['Colombo Sri Lanka', 6.9215305,79.8648533, 2],
           ['Sweden', 59.8332794,17.6584471, 1]
       ];
-      
-      <?php 
-      $str = "";
-      foreach ($db->getLocations() as $key => $value) {
-           $location = explode(",", $value);
-          // $str .= "['{$key}', {$location[0]}, {$location[1]}, ],"
-      }
-
-      ?>
+  
 			// map 
-     
 
 			// var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			  var mapOptions = {
-			    zoom: 4,
+			    zoom: 3,
           center: new google.maps.LatLng(-33.92, 151.25),
           mapTypeId: google.maps.MapTypeId.ROADMAP
 			  };
@@ -2054,7 +2049,7 @@ function showFileUploader(){
 
 </body>
 </html>
-<?php //}else{
-  //header('location:login.php');
-//}
+<?php }else{
+  header('location:login.php');
+}
 ?>
