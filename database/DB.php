@@ -122,7 +122,7 @@ class DB {
 	}
 
 	public function putFile($buket,$filename,$filepath,$location)
-	{		$username = $this->getSession('userName');
+	{		$username = $this->getSession('username');
 			$query = "INSERT INTO `localrepo` VALUES ('','{$buket}','{$filename}','{$filepath}','{$location}','{$username}')";
 			mysqli_query($this->connection,$query);
 	}
