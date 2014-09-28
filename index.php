@@ -12,7 +12,7 @@
 
 include('database/DB.php');
 $db = new DB();
-if(null !== $db->getSession('username')){
+//if(null !== $db->getSession('username')){
 ?>
 
 <head>
@@ -2049,7 +2049,7 @@ function showFileUploader(){
 
 </body>
 </html>
-<?php }else{
-  header('location:login.php');
-}
+<?php //}else{
+  //header('location:login.php');
+//}
 ?>
